@@ -5,7 +5,8 @@
     <title>E-shamba</title>
     <link rel="stylesheet" href="../assets/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
-    <script src="./app.js"></script>
+   
+   
     <style>
         .card-container{
             display: flex;
@@ -52,7 +53,9 @@ background-image: url('../images/barley.png');
     </style>
 </head>
 <body>
-    <nav class="navbar">
+   
+    <div id="app">
+        <nav class="navbar">
        
             <a href="./home.html">Home</a>
             <a href="./products.html">products</a>
@@ -60,10 +63,15 @@ background-image: url('../images/barley.png');
             <div class="logo">
                 
                 <span class=" icon icon-farm"></span>
-            </div>         
-        
+            </div>  
+            <a @click="toggleSideBar" class="top-bar-cart-link">
+                <i class="icofont-cart-alt icofont-1x"></i>
+                <span>Cart (0)</span>
+            </a>       
+           
     </nav>
-    <div id="app">
+   
+
         <div class="card-container">
             <div class="card"> 
                 <span class="icon icon-fruits"></span>        
@@ -82,11 +90,19 @@ background-image: url('../images/barley.png');
                 <h3>cereals</h3>
                 <p>we have variety of cereals</p>
                 <button type="button" value="variety" class="button">variety</button>
+            </div>    
         </div>
+     
+    <cart-component
+        v-if="isCartVisible"
+        :toogle="toggleSideBar"
+        :cart="cart"
+        :products="products"/>
        
 
     </div>
   
+    <script src="../app.js"></script>
     
 </body>
 </html>
